@@ -31,4 +31,9 @@ app.post('/todo/new', async (req, res)=> {
     res.json(todo);
 });
 
+app.delete('/todo/delete/:id', async (req, res)=> {
+    const result = await Todo.findByIdAndDelete(req.params.id);
+    res.json(result);
+})
+
 app.listen(4000, ()=> console.log(`Connected to server at port ${process.env.PORT}`));
